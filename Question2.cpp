@@ -1,56 +1,47 @@
-//Question2: WAP to create a class employee
-
+/*2. WAP to allocate memory dynamically for storing a student's n subject marks and m length
+of characters for storing name. Input and display name, individual subject marks and average
+mark of student.*/
 #include<iostream>
 using namespace std;
-
-class employee{
+class student {
 	public:
-		int ID, dept_ID, salary;
-		char *name= new char[20];
-		employee(){
-		}
-		employee(int id, int dept_id, int sal, char* ename){
-			ID=id;
-			dept_ID=dept_id;
-			name=ename;
-			salary=sal;
-			cout<<"Employee details:"<<endl;
-			cout<<"Employee ID: "<<ID<<endl;
-			cout<<"Employee Name: "<<ename<<endl;
-			cout<<"Salary: "<<salary<<endl;
-			cout<<"Department ID: "<<dept_id<<endl;
-		}
-		employee(employee &k){
-			ID=k.ID;
-			dept_ID=k.dept_ID;
-			name=k.name;
-			salary=k.salary;
+		int n,m,sum;
+		float avg;
+		
+		student(){
+			cout << "Enter the number of marks to store: " << endl;
+			cin >> n;
+			int *marks = new int[n];
+			float average;
+			cout<<"Enter number of characters in name:"<<endl;
+			cin >> m;
+			char *name= new char[m];
+			cout<<"Enter name:"<<endl;
+			cin>>name;
 			
-		}
-		friend void display(employee);
-};
+			cout<<"Enter marks:"<<endl;
+			for (int i = 0; i<n; i++)
+        {
+            cin >> *(marks+i);
+        }
+			for(int i=0;i<n;i++){
+				sum=sum+*(marks+i);
+			} 
+			average=sum/n;
+			cout<<"Name:"<<name<<endl;
+			for(int i=0;i<n;i++){
+				cout<<"Marks:"<<*(marks+i)<<endl;
+			}
+			cout<<"Sum:"<<sum<<endl;
+			cout<<"Average:"<<average<<endl;
+	}
 
-void display(employee e){
-	cout<<"Employee details:"<<endl;
-	cout<<"Employee ID: "<<e.ID<<endl;
-	cout<<"Employee Name: "<<e.name<<endl;
-	cout<<"Salary: "<<e.salary<<endl;
-	cout<<"Department ID: "<<e.dept_ID<<endl;
-}
+};
 int main(){
-	employee e1;
-	int id, dept,sal;
-	char *name=new char[20];
-	cout<<"Enter Employee Name:";
-	cin>>name;
-	cout<<"Enter Employee ID:";
-	cin>>id;
-	cout<<"Enter Monthly salary:";
-	cin>>sal;
-	cout<<"Enter Department ID:";
-	cin>>dept;
-	e1=employee(id,dept,sal,name);
-	employee e2=e1;
-	display(e2);
-	return 0;
+	student s1;
+	//s1.display();
 }
+
+
+
+

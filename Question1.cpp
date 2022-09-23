@@ -1,68 +1,29 @@
-//Question 1: WAP to create a class student having roll, name and subject marks
-
+/*1)WAP to find the number of objects created.*/
 #include<iostream>
 using namespace std;
-
-class student{
-	public:
-		int roll;
-		int *marks = new int[5];
-		char *name=new char[20];
-		student(){
-		}
-		student(int roll, int* mark, char* sname){
-			roll=roll;
-			name=sname;
-			marks=mark;
-			cout<<"Student Details:"<<endl;
-			cout<<"Name: "<<name<<endl;
-			cout<<"Roll: "<<roll<<endl;
-			for(int i=0; i<5; i++){
-				cout<<"Marks: "<<*(marks+i)<<endl;
-			}
-			
-		}
-		~student(){
-			delete []marks;
-			delete []name;
-			
-			cout<<"Memory dealloacted"<<endl;
-		}
+class student {
+public:
+	static int k;
+	int objects1(student [], int n);
+	
 };
 
-int main(){
-	int *marks=new int[5];
-	char *name=new char[20];
-	int roll;
-	student s1,s2;
+int student::k;
+int student:: objects1(student obj[], int n) {
+	for (int i = 0; i < n; i++)
 	{
-		
-		cout<<"For first student"<<endl;
-		cout<<"Enter name:"<<endl;
-		cin>>name;
-		cout<<"Enter roll:"<<endl;
-		cin>>roll;
-		for(int i=0;i<5;i++){
-			cout<<"enter marks:"<<endl;
-			cin>>*(marks+i);
-		}
-		
-		s1=student(roll, marks, name);
+		k++;
 	}
-	
-	{
-		
-		cout<<"For second student:"<<endl;
-		cout<<"Enter name:"<<endl;
-		cin>>name;
-		cout<<"Enter roll:"<<endl;
-		cin>>roll;
-		for(int i=0;i<5;i++){
-			cout<<"enter marks:"<<endl;
-			cin>>*(marks+i);
-		}
-		s2=student(roll, marks, name);
-	}
-	
+	return k;
+
+}
+int main()
+{
+	int n, noofobjects;
+	cout << "Enter number of students: " << endl;
+	cin >> n;
+	student s[n];
+	noofobjects =s[0].objects1(s, n);
+	cout << "Number of objects created: " << noofobjects << endl;
 	return 0;
 }
